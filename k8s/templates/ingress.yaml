@@ -5,10 +5,9 @@ metadata:
   namespace: mtls
 spec:
   entryPoints:
-    - tcp
+    - websecure
   routes:
   - match: HostSNI(`*`)
-    kind: Rule
     services:
     - name: mtls-app
       port: 443

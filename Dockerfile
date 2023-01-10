@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 4433
 
-ENTRYPOINT [ "/usr/local/bin/node", "/app/index.js" ]
+ENTRYPOINT [ "node", "index.js" ]

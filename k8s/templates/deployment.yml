@@ -20,7 +20,7 @@ spec:
         - containerPort: 4433
         volumeMounts:
           - name: certs
-            mountPath: /app
+            mountPath: /app/certs
       volumes:
       - name: certs
         projected:
