@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: mtls-app
+  namespace: mtls
+spec:
+  entryPoints:
+    - tcp
+  routes:
+  - match: HostSNI(`*`)
+    kind: Rule
+    services:
+    - name: mtls-app
+      port: 443
+  tls:
+    passthrough: true 

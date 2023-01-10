@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mtls-app
+spec:
+  selector:
+    app: mtls-app
+  ports:
+  - protocol: TCP
+    port: 443
+    targetPort: 4433
+  type: ClusterIP

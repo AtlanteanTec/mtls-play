@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mtls-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mtls-app
+  template:
+    metadata:
+      labels:
+        app: mtls-app
+    spec:
+      containers:
+      - name: mtls-app
+        image: mtls-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 4433
+        volumeMounts:
+          - name: certs
+            mountPath: /app
+      volumes:
+      - name: certs
+        projected:
+          sources:
+          - secret:
+              name: server-cert
+          - secret:
+              name: server-key
+          - secret:
+              name: root-ca
